@@ -5,7 +5,9 @@ import net.core.repository.MemberRepository;
 
 public class MemberServiceImpl implements MemberService {
 
-    private final MemberRepository memberRepository;
+    private MemberRepository memberRepository;
+
+    public MemberServiceImpl() {}
 
     public MemberServiceImpl(MemberRepository memberRepository)
     {
@@ -22,6 +24,6 @@ public class MemberServiceImpl implements MemberService {
     public Member findMember(Long memberId)
     {
         return memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalStateException("유저를 찾을 수 없습니다"));
+                .orElseThrow(() -> new IllegalStateException("Member Not Found"));
     }
 }

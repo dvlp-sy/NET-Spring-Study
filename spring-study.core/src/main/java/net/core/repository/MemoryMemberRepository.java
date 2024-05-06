@@ -9,6 +9,7 @@ import java.util.Optional;
 public class MemoryMemberRepository implements MemberRepository {
 
     public static Map<Long, Member> store = new HashMap<>();
+
     @Override
     public void save(Member member)
     {
