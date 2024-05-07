@@ -1,21 +1,26 @@
 package net.core.service;
 
+import net.core.AppConfig;
 import net.core.domain.Grade;
 import net.core.domain.Member;
-import net.core.repository.MemberRepository;
-import net.core.repository.MemoryMemberRepository;
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class MemberServiceTest
 {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final MemberService memberService = new MemberServiceImpl(memberRepository);
+    private MemberService memberService;
+
+    @BeforeEach
+    public void beforeEach()
+    {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+    }
 
     @Test
-    void join()
+    public void join()
     {
         // given
         Member member = new Member(1L, "Gildong,", Grade.VIP);
@@ -25,12 +30,12 @@ class MemberServiceTest
         Member findMember = memberService.findMember(member.getId());
 
         // then
-        Assertions.assertThat(member).isEqualTo(findMember);
+        assertThat(member).isEqualTo(findMember);
 
     }
 
     @Test
-    void findMember()
+    public void findMember()
     {
         // given
         Member member = new Member(2L, "Nana", Grade.BASIC);
@@ -40,6 +45,6 @@ class MemberServiceTest
         Member findMember = memberService.findMember(member.getId());
 
         // then
-        Assertions.assertThat(member).isEqualTo(findMember);
+        assertThat(member).isEqualTo(findMember);
     }
 }

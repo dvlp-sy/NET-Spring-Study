@@ -5,9 +5,7 @@ import net.core.repository.MemberRepository;
 
 public class MemberServiceImpl implements MemberService {
 
-    private MemberRepository memberRepository;
-
-    public MemberServiceImpl() {}
+    private final MemberRepository memberRepository;
 
     public MemberServiceImpl(MemberRepository memberRepository)
     {
