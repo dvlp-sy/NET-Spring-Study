@@ -1,11 +1,12 @@
 package net.core.autowired;
 
+import jakarta.annotation.Nullable;
 import net.core.domain.Member;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.lang.Nullable;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ public class AutowiredTest
         ApplicationContext ac = new AnnotationConfigApplicationContext(TestBean.class);
     }
 
+    @Configuration
     static class TestBean
     {
         @Autowired(required = false)
