@@ -5,20 +5,20 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MemberRepository
+public class UserRepository
 {
     @PersistenceContext
     private EntityManager em;
 
-    public Long save(Member member)
+    public Long save(Users users)
     {
-        em.persist(member);
-        return member.getId();
+        em.persist(users);
+        return users.getId();
     }
 
-    public Member find(Long id)
+    public Users find(Long id)
     {
-        return em.find(Member.class, id);
+        return em.find(Users.class, id);
     }
 
 }
