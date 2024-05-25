@@ -1,19 +1,17 @@
 package net.jpa.repository;
 
 import jakarta.persistence.EntityManager;
+import lombok.RequiredArgsConstructor;
 import net.jpa.domain.Member;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
-    private EntityManager em;
-
-    public MemberRepository(EntityManager em) {
-        this.em = em;
-    }
+    private final EntityManager em;
 
     public Long save(Member member) {
         em.persist(member);

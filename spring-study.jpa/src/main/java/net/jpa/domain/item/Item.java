@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import net.jpa.domain.Category;
 import net.jpa.domain.OrderItem;
+import net.jpa.exception.NotEnoughStockException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,4 +32,17 @@ public abstract class Item
 
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<Category>();
+
+    /* 비즈니스 로직 */
+    public void addStock(Long stockQuantity) {
+        this.stockQuantity += stockQuantity;
+    }
+
+    public void removeStock(Long stockQuantity) {
+        Long restStock = this.stockQuantity - stockQuantity;
+        if (restStock < 0) {
+            throw new NotEnoughStockException("need more stock");
+        }
+        this.stockQuantity -= restStock;
+    }
 }
