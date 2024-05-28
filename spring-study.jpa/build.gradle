@@ -31,6 +31,14 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// Bean Validation API
+	implementation 'javax.validation:validation-api:2.0.1.Final'
+	// Hibernate Validator
+	implementation 'org.hibernate.validator:hibernate-validator:6.0.13.Final'
+	// Optional: JSR 305 for validation annotations
+	implementation 'com.google.code.findbugs:jsr305:3.0.2'
+	// Optional: Validation API Source for documentation
+	implementation 'javax.validation:validation-api:2.0.1.Final:sources'
 }
 
 tasks.named('test') {
