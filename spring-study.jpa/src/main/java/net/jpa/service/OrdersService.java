@@ -9,6 +9,8 @@ import net.jpa.repository.OrdersRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -45,6 +47,13 @@ public class OrdersService {
     public void cancelOrder(Long orderId) {
         Orders orders = ordersRepository.findOne(orderId);
         orders.cancel();
+    }
+
+    /**
+     * 주문 검색
+     */
+    public List<Orders> findOrders(OrderSearch orderSearch) {
+        return ordersRepository.findAllByCriteria(orderSearch);
     }
 
 }
